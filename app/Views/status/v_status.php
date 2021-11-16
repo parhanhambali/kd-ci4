@@ -96,7 +96,7 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                <?php echo form_open('status/detail/' . $value['status_id']) ?>
+                <?php echo form_open('status/edit/' . $value['status_id']) ?>
 
                 <div class="form-group">
                     <label for="">Edit Status</label>

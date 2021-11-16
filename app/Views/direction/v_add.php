@@ -29,7 +29,7 @@
                         <?php echo form_open_multipart('direction/insert'); ?>
 
                         <div class="form-group">
-                            <label for="">Nomor Arsip</label>
+                            <label for="">Nomor Naskah</label>
                             <input type="text" name="script_number" class="form-control"
                                 placeholder="Tambah Nomor Surat Disini ...">
                         </div>

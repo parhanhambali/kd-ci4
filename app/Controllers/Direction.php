@@ -267,7 +267,7 @@ class Direction extends BaseController
             $filename_invalid = $file_pdf_valid->getRandomName();
 
 
-            if ($file_pdf_invalid || $file_pdf_valid->getError() == 4) {
+            if ($file_pdf_invalid && $file_pdf_valid->getError() == 4) {
 
                 $data = array(
                     'direction_id'      => $direction_id,
@@ -283,7 +283,7 @@ class Direction extends BaseController
                 $this->Model_direction->edit($data);
             } else {
                 $direction = $this->Model_direction->detail_data($direction_id);
-                if ($direction['file_pdf_valid'] || ['file_pdf_invalid'] != "") {
+                if ($direction['file_pdf_valid'] && ['file_pdf_invalid'] != "") {
                     unlink('file_pdf_valid/' . $direction['file_pdf_valid']) || ('file_pdf_invalid/' . $direction['file_pdf_invalid']);
                 }
 
@@ -319,8 +319,8 @@ class Direction extends BaseController
     public function delete($direction_id)
     {
         $direction = $this->Model_direction->detail_data($direction_id);
-                if ($direction['file_pdf_valid'] || ['file_pdf_invalid'] != "") {
-                    unlink('file_pdf_valid/' . $direction['file_pdf_valid']) && ('file_pdf_invalid' . $direction['file_pdf_invalid']);               
+                if ($direction['file_pdf_valid'] && ['file_pdf_invalid'] != "") {
+                    unlink('file_pdf_valid/' . $direction['file_pdf_valid']) && ('file_pdf_invalid/' . $direction['file_pdf_invalid']);               
                 }
                 
         $data = array(

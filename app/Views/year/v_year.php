@@ -37,7 +37,7 @@
 
                         <td>
                             <button class="btn btn-sm btn-warning" data-toggle="modal">
-                                <a href="<?= base_url('') ?>">Detail</a>
+                                <a href="<?= base_url('year/detail/' . $value['year_id']) ?>">Detail</a>
                             </button>
                             <button class="btn btn-sm btn-danger" data-toggle="modal"
                                 data-target="#delete<?= $value['year_id']; ?>">Hapus</button>

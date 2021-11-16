@@ -51,8 +51,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no = 1;
-                        foreach ($direction as $key => $value) { ?>
+                    <?php $no = 1; ?>
+                    <?php foreach($direction as $key => $value) { ?>
                     <tr>
                         <td><?= $no++; ?></td>
                         <td><?= $value['script_number']; ?></td>
@@ -62,19 +62,15 @@
                         <td><?= $value['status_name']; ?></td>
                         <td><?= $value['description']; ?></td>
                         <td><?= $value['replacement']; ?></td>
-
                         <td><a href="<?= base_url('direction/viewpdf/' . $value['direction_id']); ?>">
                                 <div class="text-center"><i class="fas fa-fw fa-file-pdf" style="font-size: 2rem;"></i>
                                 </div>
                             </a><br>
-
                         </td>
-
                         <td><a href="<?= base_url('direction/viewpdf/' . $value['direction_id']); ?>">
                                 <div class="text-center"><i class="fas fa-fw fa-file-pdf" style="font-size: 2rem;"></i>
                                 </div>
                             </a><br>
-
                         </td>
 
                         <td>
