@@ -1,3 +1,4 @@
+
 <div class="col-sm-12">
     <table class="table table-bordered" style="background-color: white;">
         <thead>
@@ -22,30 +23,78 @@
     </table>
 </div>
 
-<div class="col-sm-12">
-    <div class="text-center">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th class="text-center" style="background-color: white;">DOKUMEN VALID</th>
-                </tr>
-            </thead>
-        </table>
-        <iframe src="<?= base_url('file_pdf_valid/' . $direction['file_pdf_valid']) ?>" style="border:none;"
-            height="600px" width="50%"></iframe>
-    </div>
 
-    <div class="col-sm-12">
-        <div class="text-center">
-            <table class="table table-bordered">
+<div class="col-sm-12">
+    <table class="table table-bordered" style="background-color: white;">   
                 <thead>
                     <tr>
-                        <th class="text-center" style="background-color: white;">DOKUMEN INVALID</th>
+                        <th>No</th>
+                        <th>File PDF</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-            </table>
-            <iframe src="<?= base_url('file_pdf_invalid/' . $direction['file_pdf_invalid']) ?>" style="border:none;"
-                height="600px" width="50%"></iframe>
+                <tbody>
+                    <?php $no=1; ?>
+                    <?php foreach($pdf as $row) : ?>
+                        <tr>
+                        <td><?= $no++; ?></td>
+                        <td><?= $row['file_pdf']; ?></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lihatPdf<?= $row['pdf_id']; ?>">
+                    Lihat PDF
+                </button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $row['pdf_id']; ?>">Hapus PDF</button>
+                            </td>
+                        </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>     
         </div>
     </div>
 </div>
+
+<?php foreach($pdf as $value) : ?>
+<div class="modal fade" id="lihatPdf<?= $value['pdf_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content mb-2">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lihatPdf">Data PDF</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                           <div class="modal-body">
+                        <iframe src="<?= base_url('oke_file/' . $value['file_pdf']) ?>" style="border:none;"
+                height="600px" width="100%"></iframe>
+                        </div>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
+
+<?php foreach ($pdf as $key => $value) { ?>
+<div class="modal fade" id="delete<?= $value['pdf_id']; ?>">
+          <div class="modal-dialog modal-danger">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Delete PDF</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                Apakah Anda Yakin Menghapus <?= $value['file_pdf']; ?> ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tidak</button>
+                <a href="<?= base_url('pdf/delete/'. $value['pdf_id']) ?>" class="btn btn-danger">Hapus </a>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+<?php } ?>

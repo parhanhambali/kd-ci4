@@ -46,6 +46,7 @@ class Filters extends BaseConfig
                 'user', 'user/*',
                 'direction', 'direction/*',
                 'excel', 'excel/*',
+                'uploads', 'uploads/*',
             ]],
             'toolbar',
             // 'honeypot',

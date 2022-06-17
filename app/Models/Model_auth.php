@@ -6,19 +6,27 @@ use CodeIgniter\Model;
 
 class Model_auth extends Model
 {
-    public function login($username, $password)
+    public function login($username, $tbl)
     {
-        return $this->db->table('user')->where([
-            'username'     => $username,
-            'password'  => $password,
-        ])->get()->getRowArray();
+        $builder = $this->db->table($tbl);
+        $builder->where('username', $username);
+        $log = $builder->get()->getRow();
+        return $log;
     }
+    
+    // public function login($username, $password)
+    // {
+    //     return $this->db->table('user')->where([
+    //         'username'     => $username,
+    //         'password'  => $password,
+    //     ])->get()->getRowArray();
+    // }
 
     public function getDataId($username, $password)
     {
         return $this->db->table('user')->where([
             'username'     => $username,
             'passwiord'  => $password,
-        ])->get()->getResult();
+        ])->get()->getRow();
     }
 }

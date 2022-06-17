@@ -7,12 +7,13 @@ use CodeIgniter\Model;
 
 class Model_direction extends Model
 {
+    protected $table = 'direction';
+    protected $allowedFields = ['direction_id','status','script_number','year_id','regarding','determination_date','description','replacement', 'files', 'file_pdf_invalid', 'file_pdf_invalid_2'];
+    
     public function all_data()
     {
         return $this->db->table('direction')
-                ->join('status', 'status.status_id = direction.status_id', 'left')      
-                ->join('year', 'year.year_id = direction.year_id', 'left')
-                ->orderBy('direction_id', 'DESC')
+                ->join('year', 'year.year_id = direction.year_id', 'left') 
                 ->get()
                 ->getResultArray();
     }
@@ -20,19 +21,10 @@ class Model_direction extends Model
     public function detail_data($direction_id)
     {
         return $this->db->table('direction')
-                ->join('status', 'status.status_id = direction.status_id', 'left')
                 ->join('year', 'year.year_id = direction.year_id', 'left')
                 ->where('direction_id', $direction_id)
                 ->get()
                 ->getRowArray();
-    }
-
-    public function per_tahun()
-    {
-        return $this->db->table('year')
-            ->orderBy('year_id', 'DESC')
-            ->get()
-            ->getResultArray();
     }
 
     public function cek_data($script_number)

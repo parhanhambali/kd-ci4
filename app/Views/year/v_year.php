@@ -1,9 +1,12 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Tahun<button type="button"
-                    class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#add">Tambah Data
-                    Tahun</button></h6>
+            <h6 class="m-0 font-weight-bold text-primary">
+                List Data Tahun Surat KD
+                <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal"
+                    data-target="#add">Tambah Data
+                    Tahun</button>
+            </h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -11,12 +14,12 @@
                     <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body text-center">
                 <?php 
                 if (session()->getFlashdata('pesan')) {
                     echo '<div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h4><i class="icon fa fa-check"></i> Success ';
+                    <h4> ';
                     echo session()->getFlashdata('pesan');
                     echo '</h4></div>';
                 }
@@ -36,9 +39,9 @@
                         <td><?= $value['year_name']; ?></td>
 
                         <td>
-                            <button class="btn btn-sm btn-warning" data-toggle="modal">
-                                <a href="<?= base_url('year/detail/' . $value['year_id']) ?>">Detail</a>
-                            </button>
+
+                            <a href="<?= base_url('year/detail/' . $value['year_id']) ?>"
+                                class="btn btn-primary btn-sm">Detail</a>
                             <button class="btn btn-sm btn-danger" data-toggle="modal"
                                 data-target="#delete<?= $value['year_id']; ?>">Hapus</button>
                         </td>

@@ -21,8 +21,10 @@
 <script src="<?= base_url('templates/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('templates/vendor/datatables/dataTables.bootstrap4.min.js')?>"></script>
 
+
 <!-- Page level custom scripts -->
 <script src="<?= base_url('templates/js/demo/datatables-demo.js')?>"></script>
+<script src="<?= base_url('templates/vendor/jquery/script.js') ?> "></script>
 
 </body>
 

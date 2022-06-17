@@ -10,11 +10,10 @@ class year extends BaseController
 {
     public function __construct()
     {
+        helper('form');
         $this->Model_year = new Model_year();
         $this->Model_direction = new Model_direction();
-        $this->Model_detail = new Model_detail();
-        
-        helper('form');
+        $this->Model_detail = new Model_detail();        
     }
 
     public function index()
@@ -56,12 +55,23 @@ class year extends BaseController
         // return view('layout/v_wrapper', $data);
     }
 
+    public function edit_detail($direction_id)
+    {
+        $data = array(
+            'title'     => 'Edit Surat Keputusan Direksi',
+            'direction' => $this->Model_direction->detail_data($direction_id),
+            'year'      => $this->Model_year->all_data(),
+            'isi'       => 'year/v_edit'
+        );
+    }
+
     public function detail($year_id)
     {
         $data = array(
             'year_id'   => $year_id,
             'title' => 'Detail Data Per Tahun',
-            'direction' => $this->Model_detail->getDetail($year_id),
+           'direction' => $this->Model_detail->getDetail($year_id),
+            'year'  => $this->Model_year->all_data(),
             'isi'   => 'year/v_detail'
         );
         return view('layout/v_wrapper', $data);
